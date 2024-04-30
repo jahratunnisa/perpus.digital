@@ -178,13 +178,13 @@
   box-shadow: 1px 1px 10px #424242;
 }
 .card.bg-pengunjung {
-  background-image: url("../assets/img/kunjungan.jpeg");
+  background-image: url("@/assets/img/kunjungan.jpeg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
 }
 .card.bg-buku {
-  background: url("../assets/img/caribuku.jpg") no-repeat center center;
+  background: url("@/assets/img/caribuku.jpg") no-repeat center center;
   background-size: cover;
 }
 </style>

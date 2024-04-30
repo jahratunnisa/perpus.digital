@@ -2,9 +2,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="text-center my-4">cari buku</h2>
-                <div class="my-3">
-                    <input type="search" class="form-control" placeholder="Cari buku" style="background-color: #6BADC2;">
+                <h2 class="text-center my-4 ">Cari Buku</h2>
+                <div class="my-3 d-flex justify-content-center">
+                    <input type="search" class="col-sm-10 form-control" placeholder="Cari buku" style="background-color: #6BADC2; width: 50rem;">
                 </div>
                 <h2 class="my-3 text-muted">Koleksi Buku</h2>
                 <div class="row">

@@ -45,7 +45,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
-        <h2 class="text-center my-4">ISI BUKU KUNJUNGAN</h2>
+        <h2 class="text-center my-4">ISI DATA KUNJUNGAN</h2>
         <form>
           <div class="row">
             <div class="col-md-8">
