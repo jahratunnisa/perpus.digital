@@ -7,8 +7,8 @@
         <div class="col-lg-11">
             <h1 class="text-center">PERPUSTAKAAN DIGITAL</h1>
             <addres>
-                SMKN 4 Tasikmalaya
-                Jl.Depok, sukamanah, purbaratu
+                SMKN 4 TASIKMALAYA <br>
+                JL.DEPOK, SUKAMENAK, PURBARATU
             </addres>
         </div>
     </div>
