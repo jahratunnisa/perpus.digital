@@ -58,13 +58,14 @@
               </div>
               <div class=" mb-3">
                 <select
+                v-model="keanggotaan"
                   class="form-kategori form-control form-control-lg form-select round-5"
                 >
                   <option value="">KATEGORI</option>
-                  <option value="siswa">siswa</option>
-                  <option value="Guru">Guru</option>
-                  <option value="staf">Staf</option>
-                  <option value="umum">Umum</option>
+                  <option>Siswa</option>
+                  <option>Guru</option>
+                  <option>Staf</option>
+                  <option>Umum</option>
                 </select>
               </div>
               <div class="mb-3">
@@ -79,7 +80,7 @@
               </div>
 
 
-            <div class="grup-option">
+            <div v-if="keanggotaan == 'Siswa'" class="grup-option">
               <div class="col-lg">
                 <select
                   class="option-jurusan form-control form-control-lg form-select rounded-5 mb-2"
@@ -139,6 +140,11 @@
   </div>
 </template>
 
+<script setup>
+
+
+const keanggotaan = ref('')
+</script>
 
 <style scoped>
 .form-control {
