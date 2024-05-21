@@ -34,7 +34,7 @@
               <td>NO</td>
               <td>NAMA</td>
               <td>KATEGORI</td>
-              <td>KELAS/JURUSAN</td>
+              <td>KELAS LENGKAP</td>
               <td>KEPERLUAN</td>
               <td>WAKTU/TGL</td>
             </tr>
@@ -48,6 +48,28 @@
               <td>Baca</td>
               <td>11.00/13-04-2024</td>
             </tr>
+            <tr>
+              <td>2.</td>
+              <td>Silvy Nur agustin</td>
+              <td>Guru</td>
+              <td></td>
+              <td>Meminjam</td>
+              <td>13.20/20-04-2024</td>
+            </tr>
+            <tr>
+              <td>3.</td>
+              <td>Lita anjelita</td>
+              <td>Siswa</td>
+              <td>XI PPLG3</td>
+              <td>Mengembalikan</td>
+              <td>10.00/22-04-2024</td>
+            </tr>
+            <td>4.</td>
+              <td>Salsa amelia</td>
+              <td>Siswa</td>
+              <td>XI PPLG3</td>
+              <td>Mengembalikan</td>
+              <td>14.00/10-05-2024</td>
           </tbody>
         </table>
       </div>
