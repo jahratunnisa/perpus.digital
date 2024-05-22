@@ -13,7 +13,8 @@
     "bootstrap": "5.3",
     "nuxt": "^3.11.1",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "websocket": "^1.0.35"
   },
   "devDependencies": {
     "@nuxtjs/supabase": "^1.2.2"

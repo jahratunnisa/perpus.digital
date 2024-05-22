@@ -6,10 +6,10 @@
 
         <div class="col-lg-11">
             <h1 class="text-center">PERPUSTAKAAN DIGITAL</h1>
-            <addres>
+            <address>
                 SMKN 4 TASIKMALAYA <br>
                 JL.DEPOK, SUKAMENAK, PURBARATU
-            </addres>
+            </address>
         </div>
     </div>
 </template>
