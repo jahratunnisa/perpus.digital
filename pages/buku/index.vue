@@ -30,53 +30,17 @@
         </div>
         <h2 class="my-3 text-muted fw-bold">Koleksi Buku</h2>
         <div class="row">
-          <div class="col-lg-2">
+          <div v-for="(book,i) in books" :key="i" class="col-lg-2">
             <div class="card mb-3">
               <div class="card-body">
-                <img
-                  src="~/assets/img/cover3.jpg"
-                  class="cover"
-                  alt="cover 1"
-                  style="width: 100%"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2">
-            <div class="card mb-3">
-              <div class="card-body">
-                <img
-                  src="~/assets/img/cover2.jpg"
-                  class="cover"
-                  alt="cover 2"
-                  style="width: 100%"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2">
-            <div class="card mb-3">
-              <div class="card-body">
-                <nuxt-link to="/rincian/buku1">
+                <nuxt-link :to="`/buku/${book.id}`">
                   <img
-                    src="@/assets/img/cover1.jpg"
+                    :src="book.cover"
                     class="cover"
                     alt="cover 1"
                     style="width: 100%"
                   />
                 </nuxt-link>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2">
-            <div class="card mb-3">
-              <div class="card-body">
-                <img
-                  src="~/assets/img/cover4.jpg"
-                  class="cover"
-                  alt="cover 4"
-                  style="width: 100%"
-                />
               </div>
             </div>
           </div>
@@ -86,10 +50,29 @@
   </div>
 </template>
 
+<script setup>
+const supabase = useSupabaseClient()
+const books = ref([])
+
+const getBooks = async () => {
+  const { data, error } = await supabase
+  .from('buku')
+  .select(`*, kategori(*)`)
+  .order('id')
+  if(data) books.value = data
+  books.value = data;
+}
+
+onMounted(() => {
+  getBooks()
+})
+
+</script>
+
 <style scoped>
 .card-body {
   width: 100%;
-  height: 27em;
+  height: 15em;
   padding: 0;
 }
 .cover {
