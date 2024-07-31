@@ -1,5 +1,10 @@
 <template>
   <div class="container-fluid">
+    <div class="row mt-3">
+      <div class="col">
+        <button class="btn btn-secondary" @click="navigateTo('/home')">Kembali</button>
+      </div>
+    </div>
     <div class="row">
       <div class="col-lg-12">
         <h2 class="text-center my-4">RIWAYAT KUNJUNGAN</h2>
@@ -11,6 +16,8 @@
               placeholder="Cari..."
               aria-label="Search"
               style="background-color: #6badc2"
+              v-model="keyword"
+              @input="getPengunjung"
             />
             <span class="input-group-text" style="background-color: #6badc2">
               <svg
@@ -28,84 +35,65 @@
             </span>
           </div>
         </div>
-        <table class="table table-responsive">
-          <thead>
-            <tr>
-              <td>NO</td>
-              <td>NAMA</td>
-              <td>KATEGORI</td>
-              <td>KELAS LENGKAP</td>
-              <td>KEPERLUAN</td>
-              <td>WAKTU/TGL</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1.</td>
-              <td>jahratunnisa</td>
-              <td>Siswa</td>
-              <td>XI PPLG3</td>
-              <td>Baca</td>
-              <td>11.00/13-04-2024</td>
-            </tr>
-            <tr>
-              <td>2.</td>
-              <td>Silvy Nur agustin</td>
-              <td>Guru</td>
-              <td></td>
-              <td>Meminjam</td>
-              <td>13.20/20-04-2024</td>
-            </tr>
-            <tr>
-              <td>3.</td>
-              <td>Lita anjelita</td>
-              <td>Siswa</td>
-              <td>XI PPLG3</td>
-              <td>Mengembalikan</td>
-              <td>10.00/22-04-2024</td>
-            </tr>
-            <td>4.</td>
-              <td>Salsa amelia</td>
-              <td>Siswa</td>
-              <td>XI PPLG3</td>
-              <td>Mengembalikan</td>
-              <td>14.00/10-05-2024</td>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <td>NO</td>
+                <td>NAMA</td>
+                <td>KATEGORI</td>
+                <td>KELAS LENGKAP</td>
+                <td>KEPERLUAN</td>
+                <td>WAKTU/TGL</td>
+              </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(visitors,i) in visitors" :key="i" class="text-center fst-italic">
+                  <td>{{ i+1 }}.</td>
+                  <td>{{ visitors.nama }}</td>
+                  <td>{{ visitors.keanggotaan.nama }}</td>
+                  <td>{{ visitors.tingkat}}-{{ visitors.jurusan }}{{ visitors.kelas }}</td>
+                  <td>{{ visitors.keperluan.nama }}</td>
+                  <td>{{ visitors.tanggal }}/{{ visitors.waktu.split(".")[0] }} </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-
-  <!-- <table class="table">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-    </tr>
-    </tbody>
-</table> -->
 </template>
+
+<script setup>
+const supabase= useSupabaseClient()
+
+const keyword = ref('')
+const visitors = ref([])
+const jmlpengunjung= ref(0)
+
+const getPengunjung =async () => {
+  const { data, error } = await supabase
+  .from('pengunjung')
+  .select(`*, keanggotaan(*), keperluan(*)`)
+  .ilike("nama",`%${keyword.value}%`)
+  .order('id', { ascending: false})
+  if (error) throw error
+  if(data) visitors.value = data
+}
+
+const getJmlPengunjung = async () => {
+  const{ data, count } = await supabase
+    .from("pengunjung") 
+    .select('*', { count: "exact" })
+    if(data) jmlpengunjung.value = count
+}
+
+onMounted(() =>{
+  getPengunjung()
+  getJmlPengunjung()
+})
+
+</script>
 
 <style scoped>
 .table td {
